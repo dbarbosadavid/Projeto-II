@@ -60,13 +60,13 @@ export class UsuarioRepository{
         }
     }
 
-    async buscarUsuarioID(id: number): Promise<Usuario>{
+    async buscarUsuarioID(id: number): Promise<Usuario[]>{
         const query = "SELECT * FROM biblioteca.usuario where id = ?" ;
 
         try {
             const resultado = await executarComandoSQL(query, [id]);
             console.log('Produto localizado com sucesso, ID: ', resultado);
-            return new Promise<Usuario>((resolve)=>{
+            return new Promise<Usuario[]>((resolve)=>{
                 resolve(resultado);
             })
         } catch (err:any) {

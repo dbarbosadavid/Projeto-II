@@ -76,13 +76,13 @@ export class LivroRepository{
         }    
     }
 
-    async buscarLivroID(id: number): Promise<Livro>{
+    async buscarLivroID(id: number): Promise<Livro[]>{
         const query = "SELECT * FROM biblioteca.livro where id = ?" ;
 
         try {
             const resultado = await executarComandoSQL(query, [id]);
             console.log('Livro localizado com sucesso, ID: ', resultado);
-            return new Promise<Livro>((resolve)=>{
+            return new Promise<Livro[]>((resolve)=>{
                 resolve(resultado);
             })
         } catch (err:any) {

@@ -33,7 +33,7 @@ export class CategoriaController extends Controller{
     ): Promise<void> {
         try {
             const categoria = await this.categoriaService.atualizaCategoria(dto);
-            return success(200, new BasicResponseDto("Produto atualizado com sucesso!", categoria));
+            return success(200, new BasicResponseDto("Categoria atualizada com sucesso!", categoria));
         } catch (error: any) {
             return notFound(400, new BasicResponseDto(error.message, undefined));
         }

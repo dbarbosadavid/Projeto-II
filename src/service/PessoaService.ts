@@ -43,13 +43,13 @@ export class PessoaService {
         return pessoa;
     }
 
-    async buscarPessoaID(pessoaData: any): Promise<Pessoa>{
+    async buscarPessoaID(pessoaData: any): Promise<Pessoa[]>{
         const idNumber = parseInt(pessoaData, 10);
         if(!idNumber){
             throw new Error("Informe o id")
         }
         const pessoa =  await this.pessoaRepository.buscarPessoaID(idNumber);
-        if(!pessoa){
+        if(pessoa.length == 0){
             throw new Error("Pessoa nao encontrada")
         }
         console.log("Service - Filtrar", pessoa);

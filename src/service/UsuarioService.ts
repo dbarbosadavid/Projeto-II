@@ -56,13 +56,13 @@ export class UsuarioService {
         return usuario;
     }
     
-    async buscarUsuarioID(usuarioData: any): Promise<Usuario>{
+    async buscarUsuarioID(usuarioData: any): Promise<Usuario[]>{
         const idNumber = parseInt(usuarioData, 10);
         if(!idNumber){
             throw new Error("Informe o id")
         }
         const usuario =  await this.usuarioRepository.buscarUsuarioID(idNumber);
-        if(!usuario){
+        if(usuario.length == 0){
             throw new Error("Usuario nao encontrado")
         }
         console.log("Service - Filtrar", usuario);

@@ -48,13 +48,13 @@ export class LivroService {
     }
 
 
-    async buscarLivroID(livroData: any): Promise<Livro>{
+    async buscarLivroID(livroData: any): Promise<Livro[]>{
         const idNumber = parseInt(livroData, 10);
         if(!idNumber){
             throw new Error("Informe o id")
         }
         const livro =  await this.livroRepository.buscarLivroID(idNumber);
-        if(!livro){
+        if(livro.length == 0){
             throw new Error("Livro nao encontrado")
         }
         console.log("Service - Filtrar", livro);

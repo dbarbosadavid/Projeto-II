@@ -53,13 +53,13 @@ export class EmprestimoService {
         return emprestimo;
     }
 
-    async buscarEmprestimoID(emprestimoData: any): Promise<Emprestimo>{
+    async buscarEmprestimoID(emprestimoData: any): Promise<Emprestimo[]>{
         const idNumber = parseInt(emprestimoData, 10);
         if(!idNumber){
             throw new Error("Informe o id")
         }
         const emprestimo =  await this.emprestimoRepository.buscarEmprestimoID(idNumber);
-        if(!emprestimo){
+        if(emprestimo.length == 0){
             throw new Error("Emprestimo nao encontrado")
         }
         console.log("Service - Filtrar", emprestimo);

@@ -40,13 +40,13 @@ export class EmprestimoRepository{
         }
     }
 
-    async buscarEmprestimoID(id: number): Promise<Emprestimo>{
+    async buscarEmprestimoID(id: number): Promise<Emprestimo[]>{
         const query = "SELECT * FROM biblioteca.emprestimo where id = ?" ;
 
         try {
             const resultado = await executarComandoSQL(query, [id]);
             console.log('Emprestimo localizado com sucesso, ID: ', resultado);
-            return new Promise<Emprestimo>((resolve)=>{
+            return new Promise<Emprestimo[]>((resolve)=>{
                 resolve(resultado);
             })
         } catch (err:any) {

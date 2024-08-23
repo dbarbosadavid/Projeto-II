@@ -35,7 +35,7 @@ export class PessoaController extends Controller {
     ): Promise<void> {
         try {
             const pessoa = await this.pessoaService.atualizaPessoa(dto);
-            return success(200, new BasicResponseDto("Produto atualizado com sucesso!", pessoa));
+            return success(200, new BasicResponseDto("Pessoa atualizado com sucesso!", pessoa));
         } catch (error: any) {
             return notFound(400, new BasicResponseDto(error.message, undefined));
         }
@@ -49,7 +49,7 @@ export class PessoaController extends Controller {
     ): Promise<void> {
         try {
             const pessoa = await this.pessoaService.deletaPessoa(dto);
-            return success(200, new BasicResponseDto("Produto deletado com sucesso!", pessoa));
+            return success(200, new BasicResponseDto("Pessoa deletado com sucesso!", pessoa));
         } catch (error: any) {
             return notFound(400, new BasicResponseDto(error.message, undefined));
         }

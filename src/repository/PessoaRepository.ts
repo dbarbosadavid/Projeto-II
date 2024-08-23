@@ -76,13 +76,13 @@ export class PessoaRepository{
         }
     }
 
-    async buscarPessoaID(id: number): Promise<Pessoa>{
+    async buscarPessoaID(id: number): Promise<Pessoa[]>{
         const query = "SELECT * FROM biblioteca.pessoa where id = ?" ;
 
         try {
             const resultado = await executarComandoSQL(query, [id]);
             console.log('Pessoa localizada com sucesso, ID: ', resultado);
-            return new Promise<Pessoa>((resolve)=>{
+            return new Promise<Pessoa[]>((resolve)=>{
                 resolve(resultado);
             })
         } catch (err:any) {

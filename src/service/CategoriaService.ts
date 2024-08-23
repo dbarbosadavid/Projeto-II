@@ -43,13 +43,13 @@ export class CategoriaService {
         return categoria;
     }
 
-    async buscarCategoriaID(categoriaData: any): Promise<Categoria>{
+    async buscarCategoriaID(categoriaData: any): Promise<Categoria[]>{
         const idNumber = parseInt(categoriaData, 10);
         if(!idNumber){
             throw new Error("Informe o id")
         }
         const categoria =  await this.categoriaRepository.buscarCategoriaID(idNumber);
-        if(!categoria){
+        if(categoria.length == 0){
             throw new Error("Categoria nao encontrada")
         }
         console.log("Service - Filtrar", categoria);
