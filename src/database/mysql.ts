@@ -4,7 +4,7 @@ const dbConfig = {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: 'i09g04o04r',
+    password: 'root',
     database: 'biblioteca'
 };
 
